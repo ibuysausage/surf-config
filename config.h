@@ -146,7 +146,7 @@ static Key keys[] = {
 	{ MODKEY,                GDK_KEY_n,      scrollv,    { .i = +10 } },
 	{ MODKEY,                GDK_KEY_p,      scrollv,    { .i = -10 } },
 	{ MODKEY,                GDK_KEY_v,      scrollv,    { .i = +50 } },
-	{ GDK_ALT_MASK,          GDK_KEY_v,      scrollv,    { .i = -50 } },
+	{ GDK_MOD1_MASK,         GDK_KEY_v,      scrollv,    { .i = -50 } },
 	{ MODKEY,                GDK_KEY_i,      scrollh,    { .i = +10 } },
 	{ MODKEY,                GDK_KEY_u,      scrollh,    { .i = -10 } },
 
