@@ -197,3 +197,6 @@ static Button buttons[] = {
 	{ OnAny,        0,              9,      clicknavigate,  { .i = +1 },    1 },
 	{ OnMedia,      MODKEY,         1,      clickexternplayer, { 0 },       1 },
 };
+
+// Homepage patch
+#define HOMEPAGE "http://127.0.0.1:8080"
