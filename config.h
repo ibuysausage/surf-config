@@ -133,26 +133,23 @@ static Key keys[] = {
 	{ MODKEY,                GDK_KEY_f,      spawn,      SETPROP("_SURF_URI", "_SURF_GO", PROMPT_GO) },
 	{ MODKEY,                GDK_KEY_slash,  spawn,      SETPROP("_SURF_FIND", "_SURF_FIND", PROMPT_FIND) },
 
-	{ 0,                     GDK_KEY_Escape, stop,       { 0 } },
-	{ MODKEY,                GDK_KEY_c,      stop,       { 0 } },
+	{ 0,                     9,       stop,       { 0 } },
+	{ MODKEY,                54,      stop,       { 0 } },
 
 	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_r,      reload,     { .i = 1 } },
 	{ MODKEY,                GDK_KEY_r,      reload,     { .i = 0 } },
 
-	{ MODKEY,                GDK_KEY_plus,      navigate,   { .i = +1 } },
-	{ MODKEY,                GDK_KEY_minus,      navigate,   { .i = -1 } },
+	{ MODKEY,                21,      navigate,   { .i = +1 } },
+	{ MODKEY,                20,      navigate,   { .i = -1 } },
 
 	/* vertical and horizontal scrolling, in viewport percentage */
 	{ MODKEY,                GDK_KEY_n,      scrollv,    { .i = +10 } },
 	{ MODKEY,                GDK_KEY_p,      scrollv,    { .i = -10 } },
 	{ MODKEY,                GDK_KEY_v,      scrollv,    { .i = +50 } },
-	{ GDK_META_MASK,         GDK_KEY_v,      scrollv,    { .i = -50 } },
+	{ GDK_ALT_MASK,          GDK_KEY_v,      scrollv,    { .i = -50 } },
 	{ MODKEY,                GDK_KEY_i,      scrollh,    { .i = +10 } },
 	{ MODKEY,                GDK_KEY_u,      scrollh,    { .i = -10 } },
 
-
-	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_j,      zoom,       { .i = -1 } },
-	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_k,      zoom,       { .i = +1 } },
 	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_q,      zoom,       { .i = 0  } },
 	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_minus,  zoom,       { .i = -1 } },
 	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_plus,   zoom,       { .i = +1 } },
