@@ -129,19 +129,19 @@ static SiteSpecific certs[] = {
  * edit the CLEANMASK() macro.
  */
 static Key keys[] = {
-	/* modifier              keyval          function    arg */
-	{ MODKEY,                GDK_KEY_g,      spawn,      SETPROP("_SURF_URI", "_SURF_GO", PROMPT_GO) },
-	{ MODKEY,                GDK_KEY_f,      spawn,      SETPROP("_SURF_FIND", "_SURF_FIND", PROMPT_FIND) },
-	{ MODKEY,                GDK_KEY_slash,  spawn,      SETPROP("_SURF_FIND", "_SURF_FIND", PROMPT_FIND) },
+	/* modifier              keycode  function    arg */
+	{ MODKEY,                42,      spawn,      SETPROP("_SURF_URI", "_SURF_GO") },
+	{ MODKEY,                41,      spawn,      SETPROP("_SURF_FIND", "_SURF_FIND") },
+	{ MODKEY,                61,      spawn,      SETPROP("_SURF_FIND", "_SURF_FIND") },
 
-	{ 0,                     GDK_KEY_Escape, stop,       { 0 } },
-	{ MODKEY,                GDK_KEY_c,      stop,       { 0 } },
+	{ 0,                     9,       stop,       { 0 } },
+	{ MODKEY,                54,      stop,       { 0 } },
 
-	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_r,      reload,     { .i = 1 } },
-	{ MODKEY,                GDK_KEY_r,      reload,     { .i = 0 } },
+	{ MODKEY|GDK_SHIFT_MASK, 27,      reload,     { .b = 1 } },
+	{ MODKEY,                27,      reload,     { .b = 0 } },
 
-	{ MODKEY,                GDK_KEY_l,      navigate,   { .i = +1 } },
-	{ MODKEY,                GDK_KEY_h,      navigate,   { .i = -1 } },
+	{ MODKEY,                46,      navigate,   { .i = +1 } },
+	{ MODKEY,                43,      navigate,   { .i = -1 } },
 
 	/* vertical and horizontal scrolling, in viewport percentage */
 	{ MODKEY,                GDK_KEY_j,      scrollv,    { .i = +10 } },
