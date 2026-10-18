@@ -40,7 +40,7 @@ static Parameter defconfig[ParameterLast] = {
 	[ScrollBars]          =       { { .i = 1 },     },
 	[ShowIndicators]      =       { { .i = 1 },     },
 	[SiteQuirks]          =       { { .i = 1 },     },
-	[SmoothScrolling]     =       { { .i = 0 },     },
+	[SmoothScrolling]     =       { { .i = 1 },     },
 	[SpellChecking]       =       { { .i = 0 },     },
 	[SpellLanguages]      =       { { .v = ((char *[]){ "en_US", NULL }) }, },
 	[StrictTLS]           =       { { .i = 1 },     },
@@ -136,7 +136,7 @@ static Key keys[] = {
 	{ MODKEY,                61,      spawn,      SETPROP("_SURF_FIND", "_SURF_FIND", PROMPT_FIND) },
 
 	// esc
-	{ 0,                     9,       stop,       { 0 } },
+	{ MODKEY,                9,       stop,       { 0 } },
 
 	{ MODKEY|GDK_SHIFT_MASK, 27,      reload,     { .i = 1 } },
 	{ MODKEY,                27,      reload,     { .i = 0 } },
