@@ -125,9 +125,16 @@ pageusermessagereply(GObject *o, GAsyncResult *r, gpointer page)
 	int nfd;
 
 	m = webkit_web_page_send_message_to_view_finish(page, r, NULL);
+	if (!m) {
+		/* The reply may be cancelled during page or process teardown. */
+		return;
+	}
+
 	name = webkit_user_message_get_name(m);
-	if (strcmp(name, "surf-pipe") != 0) {
-		fprintf(stderr, "webext-surf: Unknown User Reply: %s\n", name);
+	if (!name || strcmp(name, "surf-pipe") != 0) {
+		fprintf(stderr, "webext-surf: Unknown User Reply: %s\n",
+		        name ? name : "(null)");
+		g_object_unref(m);
 		return;
 	}
 
