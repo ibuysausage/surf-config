@@ -199,4 +199,4 @@ static Button buttons[] = {
 };
 
 // Homepage patch
-#define HOMEPAGE "http://127.0.0.1:8080"
+#define HOMEPAGE "http://192.168.4.30:8080"
