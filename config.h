@@ -108,9 +108,15 @@ static WebKitFindOptions findopts = WEBKIT_FIND_OPTIONS_CASE_INSENSITIVE |
  * first and put site-specific files after it.
  */
 static SiteSpecific styles[] = {
-	/* regexp               file in $styledir */
-	{ ".*",                 "default.css" },
-	{ ".*alacritty\\.org*", "alacritty.css"}
+	/* regexp                               file in $styledir */
+	{ ".*",                                   "default.css" },
+	{ "wiki\\.archlinux\\.org",               "archwiki.css"},
+	{ "search\\.nixos\\.org",                 "nixos-search.css"},
+	{ "github\\.com",                         "github.css" },
+	{ "gist\\.github\\.com",                  "github.css" },
+	{ "docs\\.github\\.com",                  "github.css" },
+	{ "viewscreen\\.githubusercontent\\.com", "github.css" },
+	{ "notebooks\\.githubusercontent\\.com",  "github.css" },
 };
 
 /* certificates */
