@@ -110,8 +110,6 @@ static WebKitFindOptions findopts = WEBKIT_FIND_OPTIONS_CASE_INSENSITIVE |
 static SiteSpecific styles[] = {
 	/* regexp                               file in $styledir */
 	{ ".*",                                   "default.css" },
-	{ "wiki\\.archlinux\\.org",               "archwiki.css"},
-	{ "search\\.nixos\\.org",                 "nixos-search.css"},
 	{ "^https://([a-z]+\\.)?github\\.com/",                                "github.css" },
 	{ "^https://viewscreen\\.githubusercontent\\.com/markdown/mermaid",    "viewscreen.css" },
 	{ "^https://notebooks\\.githubusercontent\\.com/view/ipynb",           "notebooks.css" },
