@@ -112,11 +112,9 @@ static SiteSpecific styles[] = {
 	{ ".*",                                   "default.css" },
 	{ "wiki\\.archlinux\\.org",               "archwiki.css"},
 	{ "search\\.nixos\\.org",                 "nixos-search.css"},
-	{ "github\\.com",                         "github.css" },
-	{ "gist\\.github\\.com",                  "github.css" },
-	{ "docs\\.github\\.com",                  "github.css" },
-	{ "viewscreen\\.githubusercontent\\.com", "github.css" },
-	{ "notebooks\\.githubusercontent\\.com",  "github.css" },
+	{ "^https://([a-z]+\\.)?github\\.com/",                                "github.css" },
+	{ "^https://viewscreen\\.githubusercontent\\.com/markdown/mermaid",    "viewscreen.css" },
+	{ "^https://notebooks\\.githubusercontent\\.com/view/ipynb",           "notebooks.css" },
 };
 
 /* certificates */
