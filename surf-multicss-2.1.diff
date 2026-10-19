@@ -1,0 +1,95 @@
+diff --color -up a/config.def.h b/config.def.h
+--- a/config.def.h	2021-05-09 18:34:33.000000000 -0400
++++ b/config.def.h	2026-10-18 20:25:47.898095160 -0400
+@@ -100,14 +100,15 @@ static WebKitFindOptions findopts = WEBK
+         } \
+ }
+ 
+-/* styles */
+-/*
+- * The iteration will stop at the first match, beginning at the beginning of
+- * the list.
++/* styles
++ * All entries whose regex matches the uri are loaded, in list order.
++ * Later entries override earlier ones, so keep the catch-all default.css
++ * first and put site-specific files after it.
+  */
+ static SiteSpecific styles[] = {
+ 	/* regexp               file in $styledir */
+ 	{ ".*",                 "default.css" },
++	/* { "alacritty\\.org",    "alacritty.css" }, */
+ };
+ 
+ /* certificates */
+diff --color -up a/surf.c b/surf.c
+--- a/surf.c	2021-05-09 18:34:33.000000000 -0400
++++ b/surf.c	2026-10-18 20:25:47.900094119 -0400
+@@ -166,8 +166,8 @@ static void seturiparameters(Client *c,
+ static void setparameter(Client *c, int refresh, ParamName p, const Arg *a);
+ static const char *getcert(const char *uri);
+ static void setcert(Client *c, const char *file);
+-static const char *getstyle(const char *uri);
+ static void setstyle(Client *c, const char *file);
++static void setstyles(Client *c, const char *uri);
+ static void runscript(Client *c);
+ static void evalscript(Client *c, const char *jsstr, ...);
+ static void updatewinid(Client *c);
+@@ -853,7 +853,7 @@ setparameter(Client *c, int refresh, Par
+ 		webkit_user_content_manager_remove_all_style_sheets(
+ 		    webkit_web_view_get_user_content_manager(c->view));
+ 		if (a->i)
+-			setstyle(c, getstyle(geturi(c)));
++			setstyles(c, geturi(c));
+ 		refresh = 0;
+ 		break;
+ 	case WebGL:
+@@ -912,23 +912,6 @@ setcert(Client *c, const char *uri)
+ 
+ }
+ 
+-const char *
+-getstyle(const char *uri)
+-{
+-	int i;
+-
+-	if (stylefile)
+-		return stylefile;
+-
+-	for (i = 0; i < LENGTH(styles); ++i) {
+-		if (styles[i].regex &&
+-		    !regexec(&(styles[i].re), uri, 0, NULL, 0))
+-			return styles[i].file;
+-	}
+-
+-	return "";
+-}
+-
+ void
+ setstyle(Client *c, const char *file)
+ {
+@@ -950,6 +933,24 @@ setstyle(Client *c, const char *file)
+ }
+ 
+ void
++setstyles(Client *c, const char *uri)
++{
++	int i;
++
++	/* -C stylefile replaces the per-site table */
++	if (stylefile) {
++		setstyle(c, stylefile);
++		return;
++	}
++
++	for (i = 0; i < LENGTH(styles); ++i) {
++		if (styles[i].regex &&
++		    !regexec(&(styles[i].re), uri, 0, NULL, 0))
++			setstyle(c, styles[i].file);
++	}
++}
++
++void
+ runscript(Client *c)
+ {
+ 	gchar *script;
+Only in b/: surf-multicss-2.1.diff

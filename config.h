@@ -102,14 +102,15 @@ static WebKitFindOptions findopts = WEBKIT_FIND_OPTIONS_CASE_INSENSITIVE |
         } \
 }
 
-/* styles */
-/*
- * The iteration will stop at the first match, beginning at the beginning of
- * the list.
+/* styles
+ * All entries whose regex matches the uri are loaded, in list order.
+ * Later entries override earlier ones, so keep the catch-all default.css
+ * first and put site-specific files after it.
  */
 static SiteSpecific styles[] = {
 	/* regexp               file in $styledir */
 	{ ".*",                 "default.css" },
+	{ "alacritty\\.org",    "alacritty.css" },
 };
 
 /* certificates */
